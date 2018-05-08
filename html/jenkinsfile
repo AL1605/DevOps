@@ -1,0 +1,9 @@
+node{
+    stage("Prepare"){
+        echo "AL Nunim"
+    }
+
+    stage("Check Version"){
+        docker --Version
+    }
+}

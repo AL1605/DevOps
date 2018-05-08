@@ -19,6 +19,5 @@ services:
     image: jenkinsci/blueocean
     ports: 
       - 8080:8080
-    hostname: 
-      - unix:///var/run/docker.sock
+    
       

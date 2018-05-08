@@ -4,6 +4,6 @@ node{
     }
 
     stage("Check Version"){
-        docker --Version
+        docker --version
     }
 }

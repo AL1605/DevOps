@@ -1,0 +1,41 @@
+docker run --detach --hostname gitlab.example.com --publish 4343:443 --publish 8080:80 --publish 2222:22 --name gitlab --restart always --volume D:/gitlab/config:/etc/gitlab --volume D:/gitlab/logs:/var/log/gitlab --volume D:/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce
+
+
+docker run --name some-nginx -v D:/DevOps/html:/usr/share/nginx/html:ro -p 8080:80 -d nginx
+
+
+D:\DevOps\html> docker build -t al-nginx .
+
+
+docker run --name al -p 8080:80 -d al-nginx
+
+
+docker inspect demo-api
+
+//Copy Images
+docker tag al-nginx al-nginx:1.0
+
+
+//Save Images
+docker save al-nginx:2.0 -o al-nginx2.0
+
+docker load -i al-nginx2.0
+
+
+//Up Images To Docker Hub
+docker tag al-nginx:latest al1605/al-nginx
+
+docker push al1605/al-nginx
+
+
+https://github.com/Sommaik/demoAPI
+
+
+docker run -d -p 3000:3000 --name devops2 demo-api
+
+docker logs -f devops
+
+
+docker run --name mongodb -d mongo
+
+docker run --name devops2 --link mongodb:mongo -p 3000:3000 -d demo-api

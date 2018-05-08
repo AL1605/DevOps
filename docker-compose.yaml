@@ -14,3 +14,9 @@ services:
       - 3000:3000
     links: 
       - mongodb:mongodb
+
+  jenkins:
+    image: jenkinsci/blueocean
+    ports: 
+      - 8080:8080
+      

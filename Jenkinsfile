@@ -42,10 +42,12 @@ pipeline{
             */
         //}
 
+        //root@
         stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
-                    sh "echo 'xxxx'"
+                    //sh "echo 'xxxx'"
+                    sh "docker pull ${env.imageName}"
                 }
             }
         }

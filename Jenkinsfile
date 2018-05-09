@@ -15,12 +15,12 @@ pipeline{
                 sh "docker --version"
             }
         }
-        stage("Build Images"){
+        /*stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
-        }
+        }*/
         //stage("Push Images"){
             /*
             steps{
@@ -42,13 +42,13 @@ pipeline{
             }
             */
         //}
-        stage("Deploy"){
+        /*stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
                     //sh "echo 'xxxx'"
                     sh "ssh core@167.99.237.229 docker pull ${env.imageName}"
                 }
             }
-        }
+        }*/
     }
 }

@@ -58,4 +58,4 @@ docker-compose stop
 
 docker run -p 8888:8080 -p 55555:50000 jenkins
 
-docker run -p 8888:8080 -p 55555:50000 -v /Users/al/Desktop/Develop/Docker-Jenkins/home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins
+docker run -p 8888:8080 -p 55555:50000 -v /Users/al/Desktop/Develop/Docker-Jenkins/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins

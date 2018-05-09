@@ -19,6 +19,7 @@ services:
     image: jenkinsci/blueocean
     ports: 
       - 8888:8080
+      - 55555:50000
     user: root
     volumes:   
       - /var/run/docker.sock:/var/run/docker.sock
@@ -28,6 +29,7 @@ services:
     image: jenkinsci/jenkins
     ports: 
       - 8080:8080
+      - 50000:50000
     user: root
     volumes:   
       - /var/run/docker.sock:/var/run/docker.sock

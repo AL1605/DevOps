@@ -1,7 +1,8 @@
 pipeline{
     agent any
     environment{
-        imageName = "al-nginx"
+        /*imageName = "al-nginx"*/
+        imageName = "al1605/al-nginx"
     }
     stages{
         stage("Prepare"){
@@ -18,6 +19,11 @@ pipeline{
             steps{
                 sh "docker build -t ${env.imageName} ."
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
+            }
+        }
+        stage("Push Images"){
+            steps{
+                sh "docker push ${env.imageName} ."
             }
         }
     }

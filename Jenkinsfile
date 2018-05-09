@@ -22,9 +22,21 @@ pipeline{
             }
         }
         stage("Push Images"){
+            /*
             steps{
-                /*sh "docker login -u xxxx -p xxxx"*/ //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
+                sh "docker login -u xxxx -p xxxx" //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
+            }
+            */
+            steps{
+                script{
+                    docker.withRegistry(
+                        'https://registry.hub.docker.com', 'docker-id'
+                    ){
+                        def image = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
+                        image.push()
+                    }
+                }
             }
         }
     }

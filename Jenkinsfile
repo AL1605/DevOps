@@ -23,7 +23,7 @@ pipeline{
         }
         stage("Push Images"){
             steps{
-                sh "docker login -u al1605 -p NoppadolNunim"
+                sh "docker login -u xxxx -p xxxx"
                 sh "docker push ${env.imageName}"
             }
         }

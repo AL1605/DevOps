@@ -32,7 +32,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry(
-                        'https://registry.hub.docker.com', 'bbfc7ea1-7a69-4804-aed6-24191660070b'
+                        'https://registry.hub.docker.com', 'docker-id'
                     ){
                         def customImage = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
                         customImage.push()

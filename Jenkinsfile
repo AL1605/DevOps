@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        imageName = "al-nginx"
+    }
     stages{
         stage("Prepare"){
             steps{
@@ -13,8 +16,8 @@ pipeline{
         }
         stage("Build Images"){
             steps{
-                sh "docker build -t al-nginx ."
-                sh "docker tag al-nginx:1.${env.BUILD_NUMBER} al-nginx"
+                sh "docker build -t ${env.imageName} ."
+                sh "docker tag ${env.imageName}:1.${env.BUILD_NUMBER} ${env.imageName}"
             }
         }
     }

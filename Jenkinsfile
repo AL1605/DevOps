@@ -23,7 +23,7 @@ pipeline{
         }
         stage("Push Images"){
             steps{
-                /*sh "docker login -u xxxx -p xxxx"*/
+                /*sh "docker login -u xxxx -p xxxx"*/ //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
             }
         }

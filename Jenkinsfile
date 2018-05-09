@@ -29,9 +29,9 @@ pipeline{
             }
             */
             steps{
-                script{
+                script(
                     docker.withRegistry(
-                        'https://hub.docker.com/r/', 'bbfc7ea1-7a69-4804-aed6-24191660070b'
+                        'https://docker.io', 'bbfc7ea1-7a69-4804-aed6-24191660070b'
                     ){
                         def image = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
                         image.push()

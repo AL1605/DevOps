@@ -39,3 +39,11 @@ docker logs -f devops
 docker run --name mongodb -d mongo
 
 docker run --name devops2 --link mongodb:mongo -p 3000:3000 -d demo-api
+
+
+** Power shell
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS=1
+docker-compose up -d 
+
+** CMD 
+set COMPOSE_CONVERT_WINDOWS_PATHS=1

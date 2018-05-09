@@ -29,7 +29,7 @@ pipeline{
             }
             */
             steps{
-                script(
+                script{
                     docker.withRegistry(
                         'https://docker.io', 'bbfc7ea1-7a69-4804-aed6-24191660070b'
                     ){

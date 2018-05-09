@@ -46,7 +46,7 @@ pipeline{
             steps{
                 sshagent(['uat-server']){
                     //sh "echo 'xxxx'"
-                    sh "docker pull ${env.imageName}"
+                    sh 'ssh core@167.99.237.229 docker pull al1605/al-nginx'
                 }
             }
         }

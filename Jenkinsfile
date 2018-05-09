@@ -14,6 +14,7 @@ pipeline{
         stage("Build Images"){
             steps{
                 sh "docker build -t al-nginx ."
+                sh "docker tag al-nginx:1.${env.BUILD_NUMBER} al-nginx"
             }
         }
     }

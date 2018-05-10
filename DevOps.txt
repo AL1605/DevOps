@@ -62,3 +62,13 @@ docker run -p 8888:8080 -p 55555:50000 -v /Users/al/Desktop/Develop/Docker-Jenki
 
 
 docker run --name myjenkins -p 8080:8080 -p 50001:50001 -v /Users/al/Desktop/Develop/Docker-Jenkins/jenkins-jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --env JENKINS_SLAVE_AGENT_PORT=50001 jenkins/jenkins:lts
+
+
+
+http://container-solutions.com/running-docker-in-jenkins-in-docker/
+
+$ docker build -t myjenk .
+...
+Successfully built 471fc0d22bff
+$ docker run -d -v /var/run/docker.sock:/var/run/docker.sock \
+                -v $(which docker):/usr/bin/docker -p 8080:8080 myjenk

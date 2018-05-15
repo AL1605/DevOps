@@ -72,3 +72,7 @@ $ docker build -t myjenk .
 Successfully built 471fc0d22bff
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock \
                 -v $(which docker):/usr/bin/docker -p 8080:8080 myjenk
+
+
+
+https://getintodevops.com/blog/the-simple-way-to-run-docker-in-docker-for-ci

@@ -23,16 +23,16 @@ services:
     user: root
     volumes:   
       - /var/run/docker.sock:/var/run/docker.sock
-      - /Users/al/Desktop/Develop/JenkinsCI/blueocean/jenkins_home:/var/jenkins_home
+      - /Users/al/Desktop/Develop/Jenkins/blueocean/jenkins_home:/var/jenkins_home
 
   jenkins:
-    image: jenkinsci/jenkins
+    image: jenkins
     ports: 
       - 8080:8080
       - 50000:50000
     user: root
     volumes:   
       - /var/run/docker.sock:/var/run/docker.sock
-      - /Users/al/Desktop/Develop/JenkinsCI/jenkins/jenkins_home:/var/jenkins_home
+      - /Users/al/Desktop/Develop/Jenkins/jenkins/jenkins_home:/var/jenkins_home
 
       

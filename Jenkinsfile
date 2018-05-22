@@ -15,12 +15,14 @@ pipeline{
                 sh "docker --version"
             }
         }
+        /*
         stage("Build Images"){
             steps{
-                //sh "docker build -t ${env.imageName} ."
+                sh "docker build -t ${env.imageName} ."
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
+        */
         stage("Push Images"){
             /*
             steps{
@@ -35,7 +37,8 @@ pipeline{
                         //'https://registry.hub.docker.com', 'docker-id'
                         'https:docker.io', 'docker-id'
                     ){
-                        def customImage = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
+                        //def customImage = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
+                        def customImage = docker.build("${env.imageName}:1.5
                         customImage.push()
                     }
                 }

@@ -15,14 +15,14 @@ pipeline{
                 sh "docker --version"
             }
         }
-        /*
+        
         stage("Build Images"){
             steps{
-                sh "docker build -t ${env.imageName} ."
+                //sh "docker build -t ${env.imageName} ."
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
-        */
+        
         stage("Push Images"){
             /*
             steps{

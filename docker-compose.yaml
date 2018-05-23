@@ -17,7 +17,7 @@ services:
     user: root
     volumes:   
       - /var/run/docker.sock:/var/run/docker.sock
-      - /Users/al/Desktop/Develop/Jenkins/jenkins/jenkins_home:/var/jenkins_home
+      - /Users/al/Desktop/Develop/Jenkins/al1605/jenkins_home:/var/jenkins_home
 
   blueocean:
     image: jenkinsci/blueocean

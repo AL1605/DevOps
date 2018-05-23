@@ -2,13 +2,15 @@ version: '3'
 services: 
   gitlabCE:
     image: gitlab/gitlab-ce
+    ports: 
+      - 8888:80
     volumes:   
       - /Users/al/Desktop/Develop/GitlabCE/config:/etc/gitlab
       - /Users/al/Desktop/Develop/GitlabCE/logs:/var/log/gitlab
       - /Users/al/Desktop/Develop/GitlabCE/data:/var/opt/gitlab
   
   jenkins:
-    image: jenkins
+    image: al1605/jenkins
     ports: 
       - 8080:8080
       - 50000:50000

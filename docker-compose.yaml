@@ -1,0 +1,36 @@
+version: '3'
+services: 
+  gitlabCE:
+    image: gitlab/gitlab-ce
+    ports: 
+      - 4444:443
+      - 8888:80
+      - 2222:22
+    volumes:   
+      - /Users/al/Desktop/Develop/GitlabCE/config:/etc/gitlab
+      - /Users/al/Desktop/Develop/GitlabCE/logs:/var/log/gitlab
+      - /Users/al/Desktop/Develop/GitlabCE/data:/var/opt/gitlab
+  
+  jenkins:
+    image: jenkins
+    ports: 
+      - 8080:8080
+      - 50000:50000
+    user: root
+    volumes:   
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/al/Desktop/Develop/Jenkins/jenkins/jenkins_home:/var/jenkins_home
+      
+  blueocean:
+    image: jenkinsci/blueocean
+    ports: 
+      - 8081:8080
+      - 50001:50000
+    user: root
+    volumes:   
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/al/Desktop/Develop/Jenkins/blueocean/jenkins_home:/var/jenkins_home
+
+  
+
+      

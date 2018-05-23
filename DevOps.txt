@@ -78,3 +78,14 @@ $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock \
 https://getintodevops.com/blog/the-simple-way-to-run-docker-in-docker-for-ci
 
 https://hub.docker.com/r/getintodevops/jenkins-withdocker/
+
+
+docker run --detach \
+    --hostname gitlab.example.com \
+    --publish 443:443 --publish 80:80 --publish 22:22 \
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    gitlab/gitlab-ce:latest

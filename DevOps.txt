@@ -80,12 +80,4 @@ https://getintodevops.com/blog/the-simple-way-to-run-docker-in-docker-for-ci
 https://hub.docker.com/r/getintodevops/jenkins-withdocker/
 
 
-docker run --detach \
-    --hostname gitlab.example.com \
-    --publish 443:443 --publish 80:80 --publish 22:22 \
-    --name gitlab \
-    --restart always \
-    --volume /srv/gitlab/config:/etc/gitlab:Z \
-    --volume /srv/gitlab/logs:/var/log/gitlab:Z \
-    --volume /srv/gitlab/data:/var/opt/gitlab:Z \
-    gitlab/gitlab-ce:latest
+docker run --detach --hostname gitlab.example.com --publish 4443:443 --publish 8080:80 --publish 2222:22 --name gitlabCE --restart always --volume /Users/al/Desktop/Develop/GitlabCE/config:/etc/gitlab:Z --volume /Users/al/Desktop/Develop/GitlabCE/logs:/var/log/gitlab:Z --volume /Users/al/Desktop/Develop/GitlabCE/data:/var/opt/gitlab:Z gitlab/gitlab-ce:latest

@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         //imageName = "al-nginx"
-        imageName = "al1605/al-nginx"
+        imageName = "al1605/jenkins"
     }
     stages{
         stage("Prepare"){
@@ -23,14 +23,14 @@ pipeline{
             }
         }
         */
-        /*stage("Push Images"){
+        stage("Push Images"){
             /*
             steps{
                 sh "docker login -u xxxx -p xxxx" //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
             }
             */
-            /*steps{
+            steps{
                 script{
                     docker.withRegistry(
                         'https://registry.hub.docker.com', 'docker-id'
@@ -41,7 +41,7 @@ pipeline{
                     }
                 }
             }
-        }*/
+        }
         /*stage("Deploy"){
             steps{
                 sshagent(['uat-server']){

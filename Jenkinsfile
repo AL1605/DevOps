@@ -15,20 +15,20 @@ pipeline{
                 sh "docker --version"
             }
         }
-        stage("Build Images"){
+        /*stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
-        }
-        stage("Push Images"){
+        }*/
+        //stage("Push Images"){
             /*
             steps{
                 sh "docker login -u xxxx -p xxxx" //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
             }
             */
-            steps{
+            /*steps{
                 script{
                     docker.withRegistry(
                         'https://registry.hub.docker.com', 'docker-id'
@@ -38,15 +38,16 @@ pipeline{
                         customImage.push()
                     }
                 }
-            }
-        }
-        /*stage("Deploy"){
+            }*/
+        //}
+        stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
                     //sh "echo 'xxxx'"
-                    sh "ssh core@167.99.237.229 docker pull ${env.imageName}"
+                    //sh "ssh core@167.99.237.229 docker pull ${env.imageName}"
+                    sh "ssh core@10.226.60.19 docker pull ${env.imageName}"
                 }
             }
-        }*/
+        }
     }
 }

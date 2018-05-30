@@ -40,12 +40,24 @@ pipeline{
                 }
             }*/
         //}
-        stage("Deploy"){
+        /*stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
                     //sh "echo 'xxxx'"
                     //sh "ssh core@167.99.237.229 docker pull ${env.imageName}"
-                    sh "ssh core@10.226.48.27 docker pull ${env.imageName}"
+                }
+            }
+        }*/
+        stage("Deploy"){
+            steps{
+                script{
+                    docker.withRegistry(
+                        'rancher.scipark.nectec.or.th', 'rancher-id'
+                        //'https:docker.io', 'docker-id'
+                    ){
+                        def customImage = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
+                        customImage.push()
+                    }
                 }
             }
         }

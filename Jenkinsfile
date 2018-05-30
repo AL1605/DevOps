@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         //imageName = "al-nginx"
-        imageName = "al1605/jenkins"
+        imageName = "al-devops"
     }
     stages{
         stage("Prepare"){
@@ -15,22 +15,20 @@ pipeline{
                 sh "docker --version"
             }
         }
-        /*
         stage("Build Images"){
             steps{
-                //sh "docker build -t ${env.imageName} ."
-                sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
+                sh "docker build -t ${env.imageName} ."
+                //sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
-        */
-        stage("Push Images"){
+        //stage("Push Images"){
             /*
             steps{
                 sh "docker login -u xxxx -p xxxx" //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
             }
             */
-            steps{
+            /*steps{
                 script{
                     docker.withRegistry(
                         'https://registry.hub.docker.com', 'docker-id'
@@ -40,8 +38,8 @@ pipeline{
                         customImage.push()
                     }
                 }
-            }
-        }
+            }*/
+        //}
         /*stage("Deploy"){
             steps{
                 sshagent(['uat-server']){

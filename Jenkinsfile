@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment{
-        imageName = "al-nginx"
-        //imageName = "al-devops"
+        //imageName = "al-nginx"
+        imageName = "al1605/al-nginx"
     }
     stages{
         stage("Prepare"){

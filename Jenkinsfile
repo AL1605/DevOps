@@ -51,8 +51,8 @@ pipeline{
         stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
-                    //sh "echo 'xxxx'"
-                    sh "ssh core@https://rancher.scipark.nectec.or.th/v1 docker pull ${env.imageName}"
+                    sh "echo 'xxxx'"
+                    //sh "ssh core@https://rancher.scipark.nectec.or.th/v1 docker pull ${env.imageName}"
                 }
             }
         }

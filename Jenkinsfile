@@ -50,14 +50,9 @@ pipeline{
         }*/
         stage("Deploy"){
             steps{
-                script{
-                    docker.withRegistry(
-                        'rancher.scipark.nectec.or.th', 'rancher-id'
-                        //'https:docker.io', 'docker-id'
-                    ){
-                        def customImage = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
-                        customImage.push()
-                    }
+                sshagent(['uat-server']){
+                    //sh "echo 'xxxx'"
+                    sh "ssh core@https://rancher.scipark.nectec.or.th/v1 docker pull ${env.imageName}"
                 }
             }
         }

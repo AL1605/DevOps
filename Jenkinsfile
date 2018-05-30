@@ -45,7 +45,7 @@ pipeline{
                 sshagent(['uat-server']){
                     //sh "echo 'xxxx'"
                     //sh "ssh core@167.99.237.229 docker pull ${env.imageName}"
-                    sh "ssh core@10.226.60.19 docker pull ${env.imageName}"
+                    sh "ssh core@10.226.48.27 docker pull ${env.imageName}"
                 }
             }
         }

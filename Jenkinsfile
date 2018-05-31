@@ -5,7 +5,7 @@ pipeline{
         imageName = "al1605/al-nginx"
     }
     stages{
-        stage("Prepare"){
+        /*stage("Prepare"){
             steps{
                 echo "AL Nunim"
             }
@@ -14,7 +14,7 @@ pipeline{
             steps{
                 sh "docker --version"
             }
-        }
+        }*/
         stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."
@@ -52,6 +52,16 @@ pipeline{
             steps{
                 sh "docker rmi ${env.imageName}:1.${env.BUILD_NUMBER}"
                 sh "docker rmi registry.hub.docker.com/${env.imageName}:1.${env.BUILD_NUMBER}"
+            }
+        }
+        stage("Pull Images"){
+            steps{
+                sh "docker pull ${env.imageName}:1.${env.BUILD_NUMBER}"
+            }
+        }
+        stage("Create Container"){
+            steps{
+                sh "docker run -d ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
     }

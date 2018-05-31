@@ -51,19 +51,18 @@ pipeline{
         }*/
         stage("Remove Images"){
             steps{
-                //sh "docker rmi ${env.imageName}:1.${env.BUILD_NUMBER}"
+                sh "docker rmi ${env.imageName}:1.${env.BUILD_NUMBER}"
                 sh "docker rmi registry.hub.docker.com/${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
         stage("Pull Images"){
             steps{
-                //sh "docker pull ${env.imageName}:1.${env.BUILD_NUMBER}"
-                sh "echo 'xxxx'"
+                sh "docker pull ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
         stage("Create Container"){
             steps{
-                sh "docker run -d ${env.imageName}:1.${env.BUILD_NUMBER}"
+                sh "docker run -d -p 8888:80 ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
     }

@@ -3,6 +3,7 @@ pipeline{
     environment{
         //imageName = "al-nginx"
         imageName = "al1605/al-nginx"
+        containerName = "al-nginx"
     }
     stages{
         /*stage("Prepare"){
@@ -15,6 +16,12 @@ pipeline{
                 sh "docker --version"
             }
         }*/
+        stage("Remove Container"){
+            steps{
+                sh "docker stop ${env.containerName}${env.BUILD_NUMBER-1}"
+                sh "docker rm ${env.containerName}${env.BUILD_NUMBER-1}"
+            }
+        }
         stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."

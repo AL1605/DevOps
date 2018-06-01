@@ -36,7 +36,7 @@ pipeline{
         }
         stage("Create Container"){
             steps{
-                sh "docker run -d -p 8888:80 ${env.imageName}:1.${env.BUILD_NUMBER}"
+                sh "docker run -d -p 8${env.BUILD_NUMBER}:80 ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
     }

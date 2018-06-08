@@ -11,11 +11,11 @@ pipeline{
                 echo "AL Nunim"
             }
         }
-        stage("Check Version"){
+        stage("Check Version"){ 
             steps{
                 sh "docker --version"
             }
-        }*/
+        }*/ 
         stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."

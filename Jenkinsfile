@@ -6,7 +6,7 @@ pipeline{
         containerName = "al-nginx"
     }
     stages{
-        /*stage("Prepare"){
+        stage("Prepare"){
             steps{
                 echo "AL Nunim"
             }
@@ -15,7 +15,8 @@ pipeline{
             steps{
                 sh "docker --version"
             }
-        }*/ 
+        }
+        /*
         stage("Build Images"){
             steps{
                 sh "docker build -t ${env.imageName} ."
@@ -28,7 +29,7 @@ pipeline{
                 sh "docker login -u xxxx -p xxxx" //ไม่จำเป็นไม่ควรใช้วิธีนี้ในการ Login Docker
                 sh "docker push ${env.imageName}"
             }
-            */
+            * /
             steps{
                 script{
                     docker.withRegistry(
@@ -40,7 +41,7 @@ pipeline{
                     }
                 }
             }
-        }
+        }*/
         /*stage("Deploy"){
             steps{
                 sshagent(['uat-server']){
@@ -49,7 +50,7 @@ pipeline{
                 }
             }
         }*/
-        stage("Remove Images"){
+        /*stage("Remove Images"){
             steps{
                 sh "docker rmi ${env.imageName}:1.${env.BUILD_NUMBER}"
                 sh "docker rmi registry.hub.docker.com/${env.imageName}:1.${env.BUILD_NUMBER}"
@@ -64,6 +65,6 @@ pipeline{
             steps{
                 sh "docker run -d -p 8888:80 ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
-        }
+        }*/
     }
 }
